@@ -1,13 +1,12 @@
 #include <iostream>
 #include "linked_list.h"
-#include "menu.h"
-using namespace std;
+
 
 int main() {
     linked_list list;
     
     // Add sample employees
-    cout << "Adding sample employees...\n";
+    std::cout << "Adding sample employees...\n";
     list.insert_employee("John", "Manager");
     list.insert_employee("Jane", "Developer");
     list.insert_employee("Bob", "Designer");
