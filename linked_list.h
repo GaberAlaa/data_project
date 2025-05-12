@@ -3,6 +3,10 @@
 #include <string> 
 #include <iostream>
 using namespace std ;
+
+// Global variable to track the next available ID
+static int nextEmployeeId = 1;
+
 struct employee {
     int id ;
     string name ;
@@ -13,7 +17,7 @@ struct employee {
 
 class linked_list {
     employee* head ;
-    
+public :
     ~linked_list() {
         employee* current = head ;
         while (current != NULL) {
@@ -22,7 +26,6 @@ class linked_list {
             delete temp ;
         }
     }
-public :
     linked_list() {
         head = NULL ;
     }
@@ -38,9 +41,9 @@ public :
         return last ;
     }
 
-    void insert_employee(int id, string name, string role) {
+    void insert_employee(string name, string role) {
         employee* new_employee = new employee ;
-        new_employee->id = id ;
+        new_employee->id = nextEmployeeId++;  // Auto-increment ID
         new_employee->name = name ;
         new_employee->role = role ;
         new_employee->next = NULL ;
