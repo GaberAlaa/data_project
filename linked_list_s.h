@@ -15,29 +15,14 @@ private:
     int count;
 
 public:
-    // Constructor
+
     linked_list() : head(nullptr), tail(nullptr), count(0) {}
 
-    // Destructor
-    ~linked_list() {
-        node* current = head;
-        while (current != nullptr) {
-            node* next = current->next;
-            delete current;
-            current = next;
-        }
-    }
 
-    // Add employee to the end of the list
     void add_employee(string name, string role) {
-        // 1. Take name and role (id is auto-assigned)
-        // 2. Make new employee object
         employee new_emp(name, role);
-        
-        // 3. Link to a new node
         node* new_node = new node(new_emp);
-        
-        // 4. Link node to the linked list
+
         if (head == nullptr) {
             head = tail = new_node;
         } else {
@@ -50,7 +35,7 @@ public:
              << " (ID: " << new_emp.id 
              << ", Role: " << role << ")\n";
     }
-    // Search by employee ID
+
     node* search_by_id(int id) {
         node* current = head;
         while (current != nullptr) {
@@ -62,8 +47,8 @@ public:
         return nullptr;
     }
 
-    // Search by employee name
-    node* search_by_name(const string& name) {
+
+    node* search_by_name(string& name) {
         node* current = head;
         while (current != nullptr) {
             if (current->data.name == name) {
@@ -74,21 +59,24 @@ public:
         return nullptr;
     }
 
-    // Remove employee by ID
-    bool remove_employee(int id) {
-        if (head == nullptr) return false;
 
-        // Special case: removing head
+    int remove_employee(int id) {
+        if (head == nullptr){
+            cout<<"id is wrong pls try agian";
+            return 0 ;
+        }
+
+
         if (head->data.id == id) {
             node* temp = head;
             head = head->next;
             if (tail == temp) tail = nullptr;
             delete temp;
             count--;
-            return true;
+            return 0;
         }
 
-        // Find the node to remove
+
         node* current = head;
         while (current->next != nullptr && current->next->data.id != id) {
             current = current->next;
@@ -106,9 +94,29 @@ public:
         return false;
     }
 
-    // Display all employees
+    void change_role(int id,string new_role ){
+        node* current =search_by_id(id);
+        current->data.change_role(new_role);
+    }
+
+    void demote(int id ){
+        node* current =search_by_id(id);
+        current->data.demote();
+    }
+
+    void display_role_history(int id){
+        node* current=search_by_id(id);
+        current->data.display_role_history();
+    }
+
+    void display_emp_info(int id){
+    node* current=search_by_id(id);
+    current->data.display_emp_info();
+    }
+
     void display_all() const {
         node* current = head;
+        cout<<"all employees:"<<endl;
         while (current != nullptr) {
             cout << "ID: " << current->data.id 
                  << ", Name: " << current->data.name
@@ -116,8 +124,6 @@ public:
             current = current->next;
         }
     }
-
-    // Get number of employees
     int get_count() const {
         return count;
     }

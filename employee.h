@@ -56,7 +56,7 @@ class employee{
 
     void demote(){
         if(stack_top>=0){
-        role = role_stack[stack_top];
+        role = peek();
         pop();
     }else {cout<<"cant demote stack is empty"<<endl;}
     }
