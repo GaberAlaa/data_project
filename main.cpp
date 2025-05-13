@@ -4,9 +4,11 @@ using namespace std;
 
 int main() {
     employee emp("gaber", "manger");
-    cout<<emp.name;
-	int x;
+    cout<<emp.name<<endl;
+    cout<<emp.id<<endl;
+    cout<<emp.emp_counter<<endl;
+
+    
     cout << "hello world"<<"\n";
-	cin>> x;
     return 0;
 }
