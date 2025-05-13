@@ -93,6 +93,45 @@ public:
 
         return false;
     }
+    
+
+    int remove_employee_by_name(string& name) {
+        if (head == nullptr) {
+            cout << "Employee with name " << name << " not found." << endl;
+            return 0;
+        }
+
+        // Handle case when the head node contains the employee to be removed
+        if (head->data.name == name) {
+            node* temp = head;
+            head = head->next;
+            if (tail == temp) tail = nullptr;  // If only one node existed
+            cout << "Removed employee: " << temp->data.name << " (ID: " << temp->data.id << ")" << endl;
+            delete temp;
+            count--;
+            return 1;
+        }
+
+        // Search for the node to be removed
+        node* current = head;
+        while (current->next != nullptr && current->next->data.name != name) {
+            current = current->next;
+        }
+
+        // If employee found, remove the node
+        if (current->next != nullptr) {
+            node* temp = current->next;
+            current->next = temp->next;
+            if (tail == temp) tail = current;  // If removing the last node
+            cout << "Removed employee: " << temp->data.name << " (ID: " << temp->data.id << ")" << endl;
+            delete temp;
+            count--;
+            return 1;
+        }
+
+        cout << "Employee with name " << name << " not found." << endl;
+        return 0;
+    }
 
     void change_role(int id,string new_role ){
         node* current =search_by_id(id);
