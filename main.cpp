@@ -1,21 +1,35 @@
 #include <iostream>
 #include "employee.h"
+#include "linked_list_s.h"
 using namespace std;
 
 
-int main() {
-    
-    employee emp("gaber", "manger");
-    cout<<emp.name<<endl;
-    cout<<emp.id<<endl;
-    cout<<emp.emp_counter<<endl;
-    emp.change_role("branch manger");
-    emp.change_role("CEO");
-    emp.change_role("CEO");
-    emp.change_role("CEO");
-    emp.display_emp_info();
 
+int main() {
+     linked_list emp_list;
+
+    emp_list.add_employee("Alice", "Developer");
+    emp_list.add_employee("Alice", "Developer");
+    emp_list.add_employee("Alice", "Developer");
     
-    cout << "hello world"<<"\n";
+    cout << "All Employees:\n";
+    emp_list.display_all();
+    
+    // Search and modify
+    node* found = emp_list.search_by_id(1);
+    if (found) {
+        found->data.change_role("Senior Developer");
+        cout << "\nAfter promotion:\n";
+        emp_list.display_all();
+    }
+    
+    // Remove employee
+    if (emp_list.remove_employee(2)) {
+        cout << "\nAfter removal:\n";
+        emp_list.display_all();
+    }
+    
+    cout << "\nTotal employees: " << emp_list.get_count() << endl;
+    
     return 0;
     }

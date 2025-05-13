@@ -1,3 +1,5 @@
+#ifndef EMPLOYEE_H  
+#define EMPLOYEE_H
 #include<iostream>
 #include<string>
 using namespace std;
@@ -68,3 +70,4 @@ class employee{
     }
 };
 int employee::emp_counter=0;
+#endif
