@@ -101,28 +101,26 @@ public:
             return 0;
         }
 
-        // Handle case when the head node contains the employee to be removed
         if (head->data.name == name) {
             node* temp = head;
             head = head->next;
-            if (tail == temp) tail = nullptr;  // If only one node existed
+            if (tail == temp) tail = nullptr;  
             cout << "Removed employee: " << temp->data.name << " (ID: " << temp->data.id << ")" << endl;
             delete temp;
             count--;
             return 1;
         }
 
-        // Search for the node to be removed
         node* current = head;
         while (current->next != nullptr && current->next->data.name != name) {
             current = current->next;
         }
 
-        // If employee found, remove the node
+
         if (current->next != nullptr) {
             node* temp = current->next;
             current->next = temp->next;
-            if (tail == temp) tail = current;  // If removing the last node
+            if (tail == temp) tail = current; 
             cout << "Removed employee: " << temp->data.name << " (ID: " << temp->data.id << ")" << endl;
             delete temp;
             count--;
