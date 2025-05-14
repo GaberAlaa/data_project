@@ -1,8 +1,11 @@
 *.exe
 *.out
 *.o
-
+*.txt
+*.docs
+*.pdf
 .vscode/
+documents/
 
 .DS_Store
 Thumbs.db
