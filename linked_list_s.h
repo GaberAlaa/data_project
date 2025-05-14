@@ -1,3 +1,5 @@
+#ifndef LINKED_LIST_S_H  
+#define LINKED_LIST_S_H
 #include<iostream>
 #include "employee.h"
 using namespace std;
@@ -146,10 +148,15 @@ public:
         current->data.display_role_history();
     }
 
-    void display_emp_info(int id){
+    void display_emp_info_by_id(int id){
     node* current=search_by_id(id);
     current->data.display_emp_info();
     }
+    void display_emp_info_by_name(string name){
+    node* current=search_by_name(name);
+    current->data.display_emp_info();
+    }    
+    
 
     void display_all() const {
         node* current = head;
@@ -165,3 +172,4 @@ public:
         return count;
     }
 };
+#endif;
