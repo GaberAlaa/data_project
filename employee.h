@@ -60,10 +60,6 @@ class employee{
         pop();
     }else {cout<<"cant demote stack is empty"<<endl;}
     }
-
-    void display_num_of_emp(){
-        cout<< emp_counter<<endl;
-    }
     void display_emp_info(){
         cout<< "employe:"<<name<<"  id:"<< id<<endl;
         display_role_history();
