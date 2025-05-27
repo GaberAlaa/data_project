@@ -11,6 +11,7 @@ class node {
 };
 
 class linked_list{
+    
 private:
     node* head;
     node* tail;
